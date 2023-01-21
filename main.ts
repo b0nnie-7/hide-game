@@ -1,8 +1,8 @@
 input.onPinPressed(TouchPin.P0, function () {
-    ship.change(LedSpriteProperty.X, -1)
+    ship.change(LedSpriteProperty.X, 1)
 })
 input.onPinPressed(TouchPin.P1, function () {
-    ship.change(LedSpriteProperty.X, 1)
+    ship.change(LedSpriteProperty.X, -1)
 })
 let alien: game.LedSprite = null
 let ship: game.LedSprite = null
@@ -15,6 +15,7 @@ basic.forever(function () {
         basic.pause(500)
         if (alien.isTouching(ship)) {
             game.gameOver()
+            music.playTone(262, music.beat(BeatFraction.Double))
         }
     }
     if (alien.isTouchingEdge()) {
